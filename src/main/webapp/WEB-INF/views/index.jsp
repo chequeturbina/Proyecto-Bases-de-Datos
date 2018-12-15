@@ -36,23 +36,57 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Proyecto Bases de Datos TAXIS</div>
+                        <div class="card-header">REGISTRO</div>
                         <div class="card-body">
                            <button type="button" class="btn btn-primary" onclick="window.location='/registro_chofer';">Registrar Chofer</button>
                            <br></br>
-<button type="button" class="btn btn-secondary" onclick="window.location='/registro_duenio';">Registrar Dueño</button>
+<button type="button" class="btn btn-dark" onclick="window.location='/registro_duenio';">Registrar Dueño</button>
 <br></br>
 <button type="button" class="btn btn-success" onclick="window.location='/registro_vehiculo';">Registrar Vehiculo</button>
 <br></br>
 <button type="button" class="btn btn-danger" onclick="window.location='/registro_usuario';">Registrar Usuario</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">CONSULTAS</div>
+                        <div class="card-body">
+                          
+                          <button type="button" class="btn btn-primary" onclick="window.location='/consulta_chofer';">CHOFERES</button>
+                          <br></br>
+<button type="button" class="btn btn-dark" onclick="window.location='/consulta_duenio';">DUEÑOS</button>
 <br></br>
-<button type="button" class="btn btn-secondary" onclick="window.location='/consulta_duenio';">Consultar Dueño</button>
+<button type="button" class="btn btn-success" onclick="window.location='/consulta_vehiculo';">VEHICULOS</button>
 <br></br>
-<button type="button" class="btn btn-success" onclick="window.location='/consulta_vehiculo';">Consultar Vehiculo</button>
+<button type="button" class="btn btn-danger" onclick="window.location='/consulta_usuario';">USUARIOS</button>
 <br></br>
-<button type="button" class="btn btn-danger" onclick="window.location='/consulta_usuario';">Consultar Usuario</button>
+<button type="button" class="btn btn-warning" onclick="window.location='/consulta_multa';">MULTAS</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">VIAJES</div>
+                        <div class="card-body">
+                          
+<button type="button" class="btn btn-primary" onclick="window.location='/consulta_duenio';">VIAJE SOLO</button>
 <br></br>
-<button type="button" class="btn btn-primary" onclick="window.location='/consulta_chofer';">Consultar Chofer</button>
+<button type="button" class="btn btn-success" onclick="window.location='/consulta_duenio';">VIAJE COMPARTIDO</button>
+<br></br>
+<button type="button" class="btn btn-danger" onclick="window.location='/consulta_duenio';">VIAJE CHOFER</button>
+<br></br>
+
                         </div>
                     </div>
             </div>

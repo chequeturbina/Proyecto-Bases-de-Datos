@@ -25,6 +25,7 @@ public class Vehiculo implements Serializable{
 	
 	private String modelo;
 	private String marca;
+	private String matricula;
 	private int anio;
 	private int pasajeros;
 	private int capacidad;
@@ -239,7 +240,18 @@ public class Vehiculo implements Serializable{
 	public void setRFC(Duenio rFC) {
 		RFC = rFC;
 	}
+	
+	
 
+	public String getMatricula() {
+		return matricula;
+	}
+
+
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
 
 
 

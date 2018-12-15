@@ -306,6 +306,7 @@ public class RutasController {
 	@RequestMapping(value="registro/vehiculo", method = RequestMethod.POST)
 	public String RegistrarVehiculo(@RequestParam("modelo")  String modelo,
 		 	                        @RequestParam("marca")  String marca,
+		 	                       @RequestParam("matricula")  String matricula,
 		 	                        @RequestParam("anio")  String anio,
 		 	                        @RequestParam("capacidad")  String capacidad,
 		 	                        @RequestParam("npuertas")  long npuertas,
@@ -328,6 +329,7 @@ public class RutasController {
 		
 		vehiculo.setModelo(modelo);
 		vehiculo.setMarca(marca);
+		vehiculo.setMatricula(matricula);
 		vehiculo.setAnio(Integer.parseInt(anio));
 		vehiculo.setCapacidad(Integer.parseInt(capacidad));
 		
@@ -414,5 +416,10 @@ public class RutasController {
 		List<Duenio> Duenios=duenioDao.listarDuenios();
 		model.addAttribute("duenios",Duenios);
 		return"consulta_vehiculo";
+	}
+	
+	@RequestMapping("/consulta_multa")
+	public String consultaMulta(Model model) {
+		return"consulta_multa";
 	}
 }

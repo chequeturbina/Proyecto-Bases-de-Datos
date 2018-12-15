@@ -33,12 +33,16 @@ public class Multa implements Serializable{
 	private int monto;
 	
 	
-	@ManyToOne(cascade={CascadeType.ALL})
-	  @JoinColumn(name="ID_CHOFER")
-	private Chofer ID_CHOFER;
-	
-	
-	
+	/*Relacion ManyToOne por que un dueño puede registrar varios vehiculos*/
+	 @ManyToOne	
+	    @JoinColumn(name="licencia")
+	    private Chofer licencia;
+	 
+	 /*Relacion ManyToOne por que un dueño puede registrar varios vehiculos*/
+	 @ManyToOne	
+	    @JoinColumn(name="matricula")
+	    private Vehiculo matricula;
+	 
 	public long getID_MULTA() {
 		return ID_MULTA;
 	}
@@ -111,15 +115,21 @@ public class Multa implements Serializable{
 
 
 
-	public Chofer getID_CHOFER() {
-		return ID_CHOFER;
+	
+
+
+	public Chofer getLicencia() {
+		return licencia;
 	}
 
 
 
-	public void setID_CHOFER(Chofer iD_CHOFER) {
-		ID_CHOFER = iD_CHOFER;
+	public void setLicencia(Chofer licencia) {
+		this.licencia = licencia;
 	}
+
+
+
 
 
 
