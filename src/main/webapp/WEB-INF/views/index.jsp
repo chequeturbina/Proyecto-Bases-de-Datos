@@ -46,8 +46,13 @@
 <br></br>
 <button type="button" class="btn btn-danger" onclick="window.location='/registro_usuario';">Registrar Usuario</button>
 <br></br>
-<button type="button" class="btn btn-warning">Consultas</button>
-
+<button type="button" class="btn btn-secondary" onclick="window.location='/consulta_duenio';">Consultar Dueño</button>
+<br></br>
+<button type="button" class="btn btn-success" onclick="window.location='/consulta_vehiculo';">Consultar Vehiculo</button>
+<br></br>
+<button type="button" class="btn btn-danger" onclick="window.location='/consulta_usuario';">Consultar Usuario</button>
+<br></br>
+<button type="button" class="btn btn-primary" onclick="window.location='/consulta_chofer';">Consultar Chofer</button>
                         </div>
                     </div>
             </div>

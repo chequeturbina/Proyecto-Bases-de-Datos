@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.brabbit.springboot.app.models.entity.Direccion;
+import com.brabbit.springboot.app.models.entity.Duenio;
 
 @Repository
 @EntityScan("com.brabbit.springboot.app.models.entity")
@@ -26,6 +27,10 @@ public class DireccionDaoImplement implements InterfaceDireccionDao {
 		em.persist(direccion);
 
 	}
-
+	
+	public List<Direccion> listarDirecciones(){
+		List<Direccion> direcciones=em.createQuery("SELECT e FROM Direccion e",Direccion.class).getResultList();
+		return direcciones;
+	}
 	
 }

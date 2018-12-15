@@ -366,4 +366,53 @@ public class RutasController {
 		
 	}
 	
+	@RequestMapping("/consulta_chofer")
+	public String consultaChofer(Model model) {
+		List<Chofer> Choferes=choferDao.listarChoferes();
+		model.addAttribute("choferes",Choferes);
+		List<Direccion> Direcciones=direccionDao.listarDirecciones();
+		model.addAttribute("direcciones",Direcciones);
+		return"consulta_chofer";
+	}
+	
+	@RequestMapping("/consulta_duenio")
+	public String consultaDuenio(Model model) {
+		List<Duenio> Duenios=duenioDao.listarDuenios();
+		model.addAttribute("duenios",Duenios);
+		List<Direccion> Direcciones=direccionDao.listarDirecciones();
+		model.addAttribute("direcciones",Direcciones);
+		return"consulta_duenio";
+	}
+	
+	@RequestMapping("/consulta_usuario")
+	public String consultaUsuario(Model model) {
+		List<Usuario> Usuarios=usuarioDao.listarUsuarios();
+		model.addAttribute("usuarios",Usuarios);
+		List<Direccion> Direcciones=direccionDao.listarDirecciones();
+		model.addAttribute("direcciones",Direcciones);
+		List<TipoUsuario> TiposUsuario=tipoDao.findAll();
+		model.addAttribute("tipos",TiposUsuario);
+		return"consulta_usuario";
+	}
+	
+	@RequestMapping("/consulta_vehiculo")
+	public String consultaVehiculo(Model model) {
+		List<Vehiculo> Vehiculos=vehiculoDao.listarVehiculos();
+		model.addAttribute("vehiculos",Vehiculos);
+		List<Chofer> Choferes=choferDao.listarChoferes();
+		model.addAttribute("choferes",Choferes);
+		List<NPuertas> Puertas=puertasDao.findAll();
+		model.addAttribute("puertas",Puertas);
+		List<LlantaRefaccion> Refacciones=refaccionDao.findAll();
+		model.addAttribute("refacciones",Refacciones);
+		List<TipoCarro> Tiposcarro=tipoCarroDao.findAll();
+		model.addAttribute("tiposcarro",Tiposcarro);
+		List<TipoGas> TiposGas=tipoGasDao.findAll();
+		model.addAttribute("tiposgas",TiposGas);
+		List<Cilindros> Cilindros=cilindrosDao.findAll();
+		model.addAttribute("cilindros",Cilindros);
+		List<Duenio> Duenios=duenioDao.listarDuenios();
+		model.addAttribute("duenios",Duenios);
+		return"consulta_vehiculo";
+	}
 }

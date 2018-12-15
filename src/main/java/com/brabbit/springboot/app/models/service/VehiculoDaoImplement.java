@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.brabbit.springboot.app.models.entity.Direccion;
+import com.brabbit.springboot.app.models.entity.Usuario;
 import com.brabbit.springboot.app.models.entity.Vehiculo;
 
 @Repository
@@ -28,5 +29,9 @@ public class VehiculoDaoImplement implements InterfaceVehiculoDao {
 
 	}
 
-	
+	public List<Vehiculo> listarVehiculos(){
+		List<Vehiculo> vehiculos=em.createQuery("SELECT e FROM Vehiculo e",Vehiculo.class).getResultList();
+		return vehiculos;
+	}
+
 }

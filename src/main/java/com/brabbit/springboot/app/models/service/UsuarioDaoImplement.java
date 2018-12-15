@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.brabbit.springboot.app.models.entity.Duenio;
 import com.brabbit.springboot.app.models.entity.Usuario;
 
 @Repository
@@ -24,6 +25,11 @@ public class UsuarioDaoImplement implements InterfaceUsuarioDao {
 		// TODO Auto-generated method stub
 		em.persist(usuario);
 
+	}
+	
+	public List<Usuario> listarUsuarios(){
+		List<Usuario> usuarios=em.createQuery("SELECT e FROM Usuario e",Usuario.class).getResultList();
+		return usuarios;
 	}
 
 }

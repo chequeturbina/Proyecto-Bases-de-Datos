@@ -30,7 +30,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 				      "/registro_duenio/**","/registro/duenio/**",
 				      "/registro_chofer/**","/registro/chofer/**",
 				      "/registro/usuario/**","/registro_usuario/**",
-				      "/registro_vehiculo/**","/registro/vehiculo/**").permitAll()
+				      "/registro_vehiculo/**","/registro/vehiculo/**",
+				      "/consulta_chofer/**","/consulta_duenio/**",
+				      "/consulta_usuario/**","/consulta_vehiculo/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
         .formLogin()

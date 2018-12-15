@@ -32,5 +32,11 @@ public class DuenioDaoImplement implements InterfaceDuenioDao {
 		System.out.println(results);
 		return results.isEmpty() ? null : results.get(0);
 	}
+	
+	public List<Duenio> listarDuenios(){
+		List<Duenio> duenios=em.createQuery("SELECT e FROM Duenio e",Duenio.class).getResultList();
+		return duenios;
+	}
+
 
 }

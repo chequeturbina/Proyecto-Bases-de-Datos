@@ -34,5 +34,10 @@ public class ChoferDaoImplement implements InterfaceChoferDao {
 		System.out.println(results);
 		return results.isEmpty() ? null : results.get(0);
 	}
+	
+	public List<Chofer> listarChoferes(){
+		List<Chofer> choferes=em.createQuery("SELECT e FROM Chofer e",Chofer.class).getResultList();
+		return choferes;
+	}
 
 }
