@@ -2,6 +2,7 @@ package com.brabbit.springboot.app.controllers;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -160,6 +160,15 @@ public class RutasController {
 		model.addAttribute("viajes", Viajes);
 		
 		return "viaje_chofer";
+	}
+	
+	@GetMapping("/viaje_compartido")
+	public String ViajeCompartido(Model model) {
+		List<Origen> am = origenDao.findAll();
+		model.addAttribute("origen", am);
+		List<Destino> em = destinoDao.findAll();
+		model.addAttribute("destino", em);
+		return "viaje_compartido";
 	}
 	
 	@GetMapping("/viaje_exitoso")
@@ -532,6 +541,7 @@ public class RutasController {
 	    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 	    		  	
 	    	  				ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+	    	  				ra.addFlashAttribute("pago", cobro);
 	    	  				return"redirect:/viaje_exitoso";
      		   	    			
      		   	    		}else {
@@ -550,6 +560,7 @@ public class RutasController {
 	  						usuarioDao.update(contador, usuario.getID_USUARIO());
 		  	
 	  						ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+	  						ra.addFlashAttribute("pago", cobrofinal);
 	  						return"redirect:/viaje_exitoso";
      		   	    			
      		   	    		}
@@ -592,6 +603,7 @@ public class RutasController {
      		   	    								usuarioDao.update(contador, usuario.getID_USUARIO());
      						    	        	
      		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+     		   	    								ra.addFlashAttribute("pago", cobrofinal);
      		   	    								return"redirect:/viaje_exitoso";
      		   	    							
      		   	    						}else {
@@ -615,6 +627,7 @@ public class RutasController {
      		   	    								usuarioDao.update(contador, usuario.getID_USUARIO());
     	        	
      		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+     		   	    								ra.addFlashAttribute("pago", cobrofinal);
      		   	    								return"redirect:/viaje_exitoso";
      		   	    							
      		   	    						}
@@ -641,6 +654,7 @@ public class RutasController {
      		   	    								usuarioDao.update(contador, usuario.getID_USUARIO());
 											
      		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+     		   	    								ra.addFlashAttribute("pago", cobrofinal);
      		   	    								return"redirect:/viaje_exitoso";
      		   	    							
      		   	    						}else {
@@ -664,6 +678,7 @@ public class RutasController {
      		   	    								usuarioDao.update(contador, usuario.getID_USUARIO());
 	        	
      		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+     		   	    								ra.addFlashAttribute("pago", cobrofinal);
      		   	    								return"redirect:/viaje_exitoso";
      		   	    							
      		   	    						}
@@ -699,6 +714,7 @@ public class RutasController {
 	   	    								usuarioDao.update(contador, usuario.getID_USUARIO());
 	
 	   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+	   	    								ra.addFlashAttribute("pago", cobrofinal);
 	   	    								return"redirect:/viaje_exitoso";
 										
 									}else {
@@ -722,7 +738,7 @@ public class RutasController {
    	    									usuarioDao.update(contador, usuario.getID_USUARIO());
 	
    	    									ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
-	
+   	    									ra.addFlashAttribute("pago", cobrofinal);
    	    									return"redirect:/viaje_exitoso";
 										
 									}
@@ -750,6 +766,7 @@ public class RutasController {
 	    									usuarioDao.update(contador, usuario.getID_USUARIO());
 
 	    									ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+	    									ra.addFlashAttribute("pago", cobrofinal);
 	    									return"redirect:/viaje_exitoso";
 										
 									}else {
@@ -773,6 +790,7 @@ public class RutasController {
     										usuarioDao.update(contador, usuario.getID_USUARIO());
 
     										ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+    										ra.addFlashAttribute("pago", cobrofinal);
     										return"redirect:/viaje_exitoso";
 
 										
@@ -793,7 +811,7 @@ public class RutasController {
    	    }
    	    }
 	
-	/*VIAJES PARA CHOFERES*/
+	/*-------------------------------------VIAJES PARA CHOFERES--------------------------------------------*/
 	@RequestMapping(value="/viajeChofer", method = RequestMethod.POST)
 	public String Viajechofer(@RequestParam("ID_VIAJE")  long ID_VIAJE,
 							  @RequestParam("correo")  String correo,
@@ -837,18 +855,19 @@ public class RutasController {
     		 										/*Contador para los viajes y chofer*/
     		 										Integer gananciabono = chofer.getGanancia();
     		 										Integer porcentajebono = 10;
-    		 										Integer porcenbono = (ganancia*porcentaje)/100;
+    		 										Integer porcenbono = (gananciabono*porcentajebono)/100;
     		 										Integer bono = chofer.getBono() + porcenbono;
 					 
     		 										choferDao.updateBono(bono, chofer.getID_CHOFER());
     		 										
     		 										ra.addFlashAttribute("success", "Viaje Asignado, Felicidades obtuviste tu bono de 20 viajes");
-    		 							   			
+    		 							   			ra.addFlashAttribute("pago", bono);
     		 							   	    	return"redirect:/viaje_chofer";
     		 										
     		 								}else {
     		 									
 								ra.addFlashAttribute("success", "Viaje Asignado");
+								ra.addFlashAttribute("pago", gananciafinal);
 		 						return"redirect:/viaje_chofer";						
     		 								}
     		 			}else {
@@ -876,18 +895,19 @@ public class RutasController {
 		 										/*Contador para los viajes y chofer*/
 		 										Integer gananciabono = chofer.getGanancia();
 		 										Integer porcentajebono = 10;
-		 										Integer porcenbono = (ganancia*porcentaje)/100;
+		 										Integer porcenbono = (gananciabono * porcentajebono)/100;
 		 										Integer bono = chofer.getBono() + porcenbono;
 				 
 		 										choferDao.updateBono(bono, chofer.getID_CHOFER());
 		 										
 		 										ra.addFlashAttribute("success", "Viaje Asignado, Felicidades obtuviste tu bono de 20 viajes");
-		 							   			
+		 										ra.addFlashAttribute("pago", bono);
 		 							   	    	return"redirect:/viaje_chofer";
 		 										
 		 								}else {
 		 									
 		 										ra.addFlashAttribute("success", "Viaje Asignado");
+		 										ra.addFlashAttribute("pago", "Tu Pago es de $" + gananciafinal);
 		 										return"redirect:/viaje_chofer";						
 		 								}
     		 				
@@ -899,5 +919,575 @@ public class RutasController {
 				return"redirect:/viaje_chofer";
 			}
 		}	
+	
+	
+/*PEDIR VIAJE COMPARTIDO-------------------------PARTE DEL USUARIO*/
+	
+	@RequestMapping(value="/pedir/viaje_compartido", method = RequestMethod.POST)
+	public String PedirViajeCompartido(@RequestParam("correo")  String correo,
+		 	                 @RequestParam("distancia")  String distancia,
+	 	                     @RequestParam("tiempo")  String tiempo,
+	 	                     
+	 	                     @RequestParam("origen")  long origen,
+	 	                     @RequestParam("origin")  String origin,
+	 	                     @RequestParam("destino")  long destino,
+	 	                     @RequestParam("destiny")  String destiny,
+		 	                 RedirectAttributes ra) {
+		
+		/*INTEGER DE ENTRE 2 A 4 PARA COMPARTIR UN VIAJE*/
+		int randomNum = ThreadLocalRandom.current().nextInt(2, 4 + 1);
+		System.out.println(randomNum);
+		
+		/*BUSCAR USUARIO POR CORREO*/
+		Usuario usuario = usuarioDao.porCorreo(correo);
+	
+   	    if(usuario != null) {
+   	    	
+             Viaje viaje = new Viaje();
+             
+             /*Contador para los viajes*/
+     		 Integer contador = usuario.getContadorusuario() + 1;
+     		 
+     		/*SAber el numero de pasajeros para el primer if*/
+     		
+     		viaje.setPasajeros(1);
+     			
+     				/*SABER EL ORIGEN Y EL DESTINO PARA SABER SI ES DENTRO DE CU O NO */
+     		   	    Origen origenif = origenDao.findOne(origen);
+     		   	    Destino destinoif = destinoDao.findOne(destino);
+     		   	    /*String para saber si el viaje es dentro de CU o no*/
+     		   	    String orin = origenif.getOrigen();
+     		   	    String destn = destinoif.getDestino();
+     		   	    
+     		   	    		if(contador%5 == 1) {
+     		   	    			
+     		   	    			TipoUsuario tipUsuario = usuario.getID_TIPO();
+     		   	    			String user = tipUsuario.getTipo();
+     		   	    			System.out.println(user);
+     		   	    			
+     		   	    					if(orin.equals("SI") && destn.equals("SI")) {
+     		   	    						
+     		   	    						if(user.equals("Estudiante")) {
+     		   	    							
+     		   	    								Integer calculodistancia = Integer.parseInt(distancia);
+     		   	    								viaje.setDistancia(calculodistancia);
+     		   	    								viaje.setTiempo(Integer.parseInt(tiempo));
+     		   	    								viaje.setID_ORIGEN(origenif);
+     		   	    								viaje.setID_DESTINO(destinoif);
+     		   	    								viaje.setOrigin(origin);
+     		   	    								viaje.setDestiny(destiny);
+     		   	    								Integer cobromedio = 10;
+     		   	    								Integer porcentaje = 15;
+     		   	    								Integer porcen = (cobromedio*porcentaje)/100;
+     		   	    								Integer cobrofinal = 10 - porcen;
+     		   	    								
+     		   	    								switch(randomNum) {
+     		   	    								
+     		   	    								case 2: 
+     		   	    									
+     		   	    									Integer porcentajecompartido = 10;
+     		   	    									Integer porcencompartido = (cobrofinal*porcentajecompartido)/100;
+     		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
+		        
+     		   	    									viaje.setCobro(cobrocompartido);
+     		   	    									viaje.setID_USUARIO(usuario);
+     		   	    									viajeDao.save(viaje);
+     		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+     		   	    									ra.addFlashAttribute("pago", cobrocompartido);
+     		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+     		   	    									break;
+     		   	    								
+     		   	    								case 3:
+     		   	    									
+     		   	    									Integer porcentajecompartido2 = 20;
+     		   	    									Integer porcencompartido2 = (cobrofinal*porcentajecompartido2)/100;
+     		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
+	        
+     		   	    									viaje.setCobro(cobrocompartido2);
+     		   	    									viaje.setID_USUARIO(usuario);
+     		   	    									viajeDao.save(viaje);
+     		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+     		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
+     		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + randomNum + " " + "personas");
+     		   	    									break;
+     		   	    								
+     		   	    								case 4:
+     		   	    									
+     		   	    									Integer porcentajecompartido3 = 30;
+     		   	    									Integer porcencompartido3 = (cobrofinal*porcentajecompartido3)/100;
+     		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
+        
+     		   	    									viaje.setCobro(cobrocompartido3);
+     		   	    									viaje.setID_USUARIO(usuario);
+     		   	    									viajeDao.save(viaje);
+     		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+     		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
+     		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+     		   	    									break;
+     		   	    								}
+     		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+     		   	    								return"redirect:/viaje_exitoso";
+     		   	    								
+     		   	    							
+     		   	    						}else {
+     		   	    							
+     		   	    								Integer calculodistancia = Integer.parseInt(distancia);
+     		   	    								viaje.setDistancia(calculodistancia);
+     		   	    								viaje.setTiempo(Integer.parseInt(tiempo));
+     		   	    								viaje.setID_ORIGEN(origenif);
+     		   	    								viaje.setID_DESTINO(destinoif);
+     		   	    								viaje.setOrigin(origin);
+     		   	    								viaje.setDestiny(destiny);
+     		   	    								Integer cobromedio = 10;
+     		   	    								Integer porcentaje = 10;
+     		   	    								Integer porcen = (cobromedio*porcentaje)/100;
+     		   	    								Integer cobrofinal = 10 - porcen;
+			        
+     		   	    							switch(randomNum) {
+ 		   	    								
+ 		   	    								case 2: 
+ 		   	    									
+ 		   	    									Integer porcentajecompartido = 10;
+ 		   	    									Integer porcencompartido = (cobrofinal*porcentajecompartido)/100;
+ 		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
+	        
+ 		   	    									viaje.setCobro(cobrocompartido);
+ 		   	    									viaje.setID_USUARIO(usuario);
+ 		   	    									viajeDao.save(viaje);
+ 		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									ra.addFlashAttribute("pago", cobrocompartido);
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									break;
+ 		   	    								
+ 		   	    								case 3:
+ 		   	    									
+ 		   	    									Integer porcentajecompartido2 = 20;
+ 		   	    									Integer porcencompartido2 = (cobrofinal*porcentajecompartido2)/100;
+ 		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
+        
+ 		   	    									viaje.setCobro(cobrocompartido2);
+ 		   	    									viaje.setID_USUARIO(usuario);
+ 		   	    									viajeDao.save(viaje);
+ 		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									break;
+ 		   	    								
+ 		   	    								case 4:
+ 		   	    									
+ 		   	    									Integer porcentajecompartido3 = 30;
+ 		   	    									Integer porcencompartido3 = (cobrofinal*porcentajecompartido3)/100;
+ 		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
+    
+ 		   	    									viaje.setCobro(cobrocompartido3);
+ 		   	    									viaje.setID_USUARIO(usuario);
+ 		   	    									viajeDao.save(viaje);
+ 		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									break;
+ 		   	    								}
+ 		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+ 		   	    								return"redirect:/viaje_exitoso";
+     		   	    							
+     		   	    						}
+     		   	    					}else {
+     		   	    						
+     		   	    						if(user.equals("Estudiante")) {
+     		   	    							
+     		   	    								Integer calculodistancia = Integer.parseInt(distancia);
+     		   	    								viaje.setDistancia(calculodistancia);
+     		   	    								viaje.setTiempo(Integer.parseInt(tiempo));
+     		   	    								viaje.setID_ORIGEN(origenif);
+     		   	    								viaje.setID_DESTINO(destinoif);
+     		   	    								viaje.setOrigin(origin);
+     		   	    								viaje.setDestiny(destiny);
+     		   	    								Integer cobromedio = 15 + (calculodistancia * 6);
+     		   	    								Integer porcentaje = 15;
+     		   	    								Integer porcen = (cobromedio*porcentaje)/100;
+     		   	    								Integer cobrofinal = cobromedio - porcen;
+		        
+     		   	    							switch(randomNum) {
+ 		   	    								
+ 		   	    								case 2: 
+ 		   	    									
+ 		   	    									Integer porcentajecompartido = 10;
+ 		   	    									Integer porcencompartido = (cobrofinal*porcentajecompartido)/100;
+ 		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
+	        
+ 		   	    									viaje.setCobro(cobrocompartido);
+ 		   	    									viaje.setID_USUARIO(usuario);
+ 		   	    									viajeDao.save(viaje);
+ 		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									ra.addFlashAttribute("pago", cobrocompartido);
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									break;
+ 		   	    								
+ 		   	    								case 3:
+ 		   	    									
+ 		   	    									Integer porcentajecompartido2 = 20;
+ 		   	    									Integer porcencompartido2 = (cobrofinal*porcentajecompartido2)/100;
+ 		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
+        
+ 		   	    									viaje.setCobro(cobrocompartido2);
+ 		   	    									viaje.setID_USUARIO(usuario);
+ 		   	    									viajeDao.save(viaje);
+ 		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									break;
+ 		   	    								
+ 		   	    								case 4:
+ 		   	    									
+ 		   	    									Integer porcentajecompartido3 = 30;
+ 		   	    									Integer porcencompartido3 = (cobrofinal*porcentajecompartido3)/100;
+ 		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
+    
+ 		   	    									viaje.setCobro(cobrocompartido3);
+ 		   	    									viaje.setID_USUARIO(usuario);
+ 		   	    									viajeDao.save(viaje);
+ 		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									break;
+ 		   	    								}
+ 		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+ 		   	    								return"redirect:/viaje_exitoso";
+     		   	    							
+     		   	    						}else {
+     		   	    							
+     		   	    								Integer calculodistancia = Integer.parseInt(distancia);
+     		   	    								viaje.setDistancia(calculodistancia);
+     		   	    								viaje.setTiempo(Integer.parseInt(tiempo));
+     		   	    								viaje.setID_ORIGEN(origenif);
+     		   	    								viaje.setID_DESTINO(destinoif);
+     		   	    								viaje.setOrigin(origin);
+     		   	    								viaje.setDestiny(destiny);
+     		   	    								Integer cobromedio = 15 + (calculodistancia * 6);
+     		   	    								Integer porcentaje = 10;
+     		   	    								Integer porcen = (cobromedio*porcentaje)/100;
+     		   	    								Integer cobrofinal = cobromedio - porcen;
+		        
+     		   	    							switch(randomNum) {
+ 		   	    								
+ 		   	    								case 2: 
+ 		   	    									
+ 		   	    									Integer porcentajecompartido = 10;
+ 		   	    									Integer porcencompartido = (cobrofinal*porcentajecompartido)/100;
+ 		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
+	        
+ 		   	    									viaje.setCobro(cobrocompartido);
+ 		   	    									viaje.setID_USUARIO(usuario);
+ 		   	    									viajeDao.save(viaje);
+ 		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									ra.addFlashAttribute("pago", cobrocompartido);
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									break;
+ 		   	    								
+ 		   	    								case 3:
+ 		   	    									
+ 		   	    									Integer porcentajecompartido2 = 20;
+ 		   	    									Integer porcencompartido2 = (cobrofinal*porcentajecompartido2)/100;
+ 		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
+        
+ 		   	    									viaje.setCobro(cobrocompartido2);
+ 		   	    									viaje.setID_USUARIO(usuario);
+ 		   	    									viajeDao.save(viaje);
+ 		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									break;
+ 		   	    								
+ 		   	    								case 4:
+ 		   	    									
+ 		   	    									Integer porcentajecompartido3 = 30;
+ 		   	    									Integer porcencompartido3 = (cobrofinal*porcentajecompartido3)/100;
+ 		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
+    
+ 		   	    									viaje.setCobro(cobrocompartido3);
+ 		   	    									viaje.setID_USUARIO(usuario);
+ 		   	    									viajeDao.save(viaje);
+ 		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									break;
+ 		   	    								}
+ 		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+ 		   	    								return"redirect:/viaje_exitoso";
+     		   	    							
+     		   	    						}
+     		   	    						
+     		   	    					}
+     		   	    			
+     		   	    		}else {
+     		   	    		
+								TipoUsuario tipUsuario = usuario.getID_TIPO();
+								String user = tipUsuario.getTipo();
+								System.out.println(user);
+								
+								if(orin.equals("SI") && destn.equals("SI")) {
+									
+									if(user.equals("Estudiante")) {
+										
+											Integer calculodistancia = Integer.parseInt(distancia);
+	   	    								viaje.setDistancia(calculodistancia);
+	   	    								viaje.setTiempo(Integer.parseInt(tiempo));
+	   	    								viaje.setID_ORIGEN(origenif);
+	   	    								viaje.setID_DESTINO(destinoif);
+	   	    								viaje.setOrigin(origin);
+	   	    								viaje.setDestiny(destiny);
+	   	    								Integer cobromedio = 15;
+	   	    								Integer porcentaje = 15;
+	   	    								Integer porcen = (cobromedio*porcentaje)/100;
+	   	    								Integer cobrofinal = 15 - porcen;
+    
+	   	    								switch(randomNum) {
+		   	    								
+		   	    								case 2: 
+		   	    									
+		   	    									Integer porcentajecompartido = 10;
+		   	    									Integer porcencompartido = (cobrofinal*porcentajecompartido)/100;
+		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
+        
+		   	    									viaje.setCobro(cobrocompartido);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido);
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								
+		   	    								case 3:
+		   	    									
+		   	    									Integer porcentajecompartido2 = 20;
+		   	    									Integer porcencompartido2 = (cobrofinal*porcentajecompartido2)/100;
+		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
+    
+		   	    									viaje.setCobro(cobrocompartido2);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								
+		   	    								case 4:
+		   	    									
+		   	    									Integer porcentajecompartido3 = 30;
+		   	    									Integer porcencompartido3 = (cobrofinal*porcentajecompartido3)/100;
+		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
+
+		   	    									viaje.setCobro(cobrocompartido3);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								}
+		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+		   	    								return"redirect:/viaje_exitoso";
+										
+									}else {
+										
+											Integer calculodistancia = Integer.parseInt(distancia);
+											viaje.setDistancia(calculodistancia);
+											viaje.setTiempo(Integer.parseInt(tiempo));
+											viaje.setID_ORIGEN(origenif);
+											viaje.setID_DESTINO(destinoif);
+   	    									viaje.setOrigin(origin);
+   	    									viaje.setDestiny(destiny);
+   	    									Integer cobromedio = 15;
+   	    									Integer porcentaje = 10;
+   	    									Integer porcen = (cobromedio*porcentaje)/100;
+   	    									Integer cobrofinal = 15 - porcen;
+    
+   	    									switch(randomNum) {
+		   	    								
+		   	    								case 2: 
+		   	    									
+		   	    									Integer porcentajecompartido = 10;
+		   	    									Integer porcencompartido = (cobrofinal*porcentajecompartido)/100;
+		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
+        
+		   	    									viaje.setCobro(cobrocompartido);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido);
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								
+		   	    								case 3:
+		   	    									
+		   	    									Integer porcentajecompartido2 = 20;
+		   	    									Integer porcencompartido2 = (cobrofinal*porcentajecompartido2)/100;
+		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
+    
+		   	    									viaje.setCobro(cobrocompartido2);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								
+		   	    								case 4:
+		   	    									
+		   	    									Integer porcentajecompartido3 = 30;
+		   	    									Integer porcencompartido3 = (cobrofinal*porcentajecompartido3)/100;
+		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
+
+		   	    									viaje.setCobro(cobrocompartido3);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
+		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								}
+		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+		   	    								return"redirect:/viaje_exitoso";
+										
+									}
+									
+								}else {
+									
+									if(user.equals("Estudiante")) {
+										
+											Integer calculodistancia = Integer.parseInt(distancia);
+											viaje.setDistancia(calculodistancia);
+											viaje.setTiempo(Integer.parseInt(tiempo));
+											viaje.setID_ORIGEN(origenif);
+											viaje.setID_DESTINO(destinoif);
+	    									viaje.setOrigin(origin);
+	    									viaje.setDestiny(destiny);
+	    									Integer cobromedio = 15 + (calculodistancia * 8);
+	    									Integer porcentaje = 15;
+	    									Integer porcen = (cobromedio*porcentaje)/100;
+	    									Integer cobrofinal = cobromedio - porcen;
+
+	    									switch(randomNum) {
+		   	    								
+		   	    								case 2: 
+		   	    									
+		   	    									Integer porcentajecompartido = 10;
+		   	    									Integer porcencompartido = (cobrofinal*porcentajecompartido)/100;
+		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
+        
+		   	    									viaje.setCobro(cobrocompartido);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido);
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								
+		   	    								case 3:
+		   	    									
+		   	    									Integer porcentajecompartido2 = 20;
+		   	    									Integer porcencompartido2 = (cobrofinal*porcentajecompartido2)/100;
+		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
+    
+		   	    									viaje.setCobro(cobrocompartido2);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
+		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								
+		   	    								case 4:
+		   	    									
+		   	    									Integer porcentajecompartido3 = 30;
+		   	    									Integer porcencompartido3 = (cobrofinal*porcentajecompartido3)/100;
+		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
+
+		   	    									viaje.setCobro(cobrocompartido3);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								}
+		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+		   	    								return"redirect:/viaje_exitoso";
+										
+									}else {
+										
+											Integer calculodistancia = Integer.parseInt(distancia);
+											viaje.setDistancia(calculodistancia);
+											viaje.setTiempo(Integer.parseInt(tiempo));
+											viaje.setID_ORIGEN(origenif);
+											viaje.setID_DESTINO(destinoif);
+    										viaje.setOrigin(origin);
+    										viaje.setDestiny(destiny);
+    										Integer cobromedio = 15 + (calculodistancia * 8);
+    										Integer porcentaje = 10;
+    										Integer porcen = (cobromedio*porcentaje)/100;
+    										Integer cobrofinal = cobromedio - porcen;
+
+    										switch(randomNum) {
+		   	    								
+		   	    								case 2: 
+		   	    									
+		   	    									Integer porcentajecompartido = 10;
+		   	    									Integer porcencompartido = (cobrofinal*porcentajecompartido)/100;
+		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
+        
+		   	    									viaje.setCobro(cobrocompartido);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido);
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								
+		   	    								case 3:
+		   	    									
+		   	    									Integer porcentajecompartido2 = 20;
+		   	    									Integer porcencompartido2 = (cobrofinal*porcentajecompartido2)/100;
+		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
+    
+		   	    									viaje.setCobro(cobrocompartido2);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								
+		   	    								case 4:
+		   	    									
+		   	    									Integer porcentajecompartido3 = 30;
+		   	    									Integer porcencompartido3 = (cobrofinal*porcentajecompartido3)/100;
+		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
+
+		   	    									viaje.setCobro(cobrocompartido3);
+		   	    									viaje.setID_USUARIO(usuario);
+		   	    									viajeDao.save(viaje);
+		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									break;
+		   	    								}
+		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
+		   	    								return"redirect:/viaje_exitoso";
+									
+								}
+     		   	    			
+     		   	    		}
+     				
+     			}
+     		
+   	    	
+   	    }else {
+   	    	
+   	    	ra.addFlashAttribute("error", "El Usuario No Existe En La Base De Datos");
+   			
+   	    	return"redirect:/viaje_compartido";
+   	    }
+   	    }
 	
 }

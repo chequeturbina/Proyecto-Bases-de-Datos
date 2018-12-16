@@ -41,8 +41,40 @@
 			<div class="alert alert-danger">${error}</div>
 		</c:if>
 
-<button type="button" class="btn btn-primary" onclick="window.location='/';">VOLVER</button>
-                          <br></br>
+<main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">VIAJE CHOFER</div>
+                        <div class="card-body">
+                        
+                        <div class="form-group row">
+                         <label for="full_name" class="col-md-4 col-form-label text-md-right">Tu Pago es de: $</label>
+                        <div class="col-md-6">
+                           <label for="full_name" class="col-md-4 col-form-label text-md-right">${pago}</label>
+                           <br></br>
+                           
+                        <br></br>
+                        
+                        </div>
+                         <label for="full_name" class="col-md-4 col-form-label text-md-right">
+                            	<c:if test="${people != null}">
+									${people}
+								</c:if>
+                            </label>
+                        </div>
+                        </div>
+                        <div class="col-md-6 offset-md-4">
+                                        <button type="button" class="btn btn-primary" onclick="window.location='/';">VOLVER</button>
+                                    </div>
+                        
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </main>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

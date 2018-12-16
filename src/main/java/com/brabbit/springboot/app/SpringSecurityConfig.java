@@ -37,7 +37,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 				      "/consulta_multa/**",
 				      
 					  "/viaje_solo/**","/pedir/viaje/**","/viaje_exitoso/**",
-					  "/viaje_chofer/**","/viajeChofer/**").permitAll()
+					  "/viaje_chofer/**","/viajeChofer/**",
+					  "/viaje_compartido/**","/pedir/viaje_compartido/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
         .formLogin()

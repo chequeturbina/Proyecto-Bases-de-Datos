@@ -138,7 +138,7 @@
     <div class="row">
         <div class="col-md-6">
             <h1 class="dashboard-heading">
-                Vehiculo
+                Usuario
             </h1>
         </div>
     </div>
@@ -147,9 +147,7 @@
             <div class="panel with-nav-tabs panel-primary">
                 <div class="panel-heading">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1primary" data-toggle="tab">Todos los Vehiculos</a></li>
-                        <li><a href="#tab2primary" data-toggle="tab">consulta2</a></li>
-                        <li><a href="#tab3primary" data-toggle="tab">consulta3</a></li>
+                        <li class="active"><a href="#tab1primary" data-toggle="tab">USUARIOS</a></li>
                     </ul>
                 </div>
                 <div class="panel-body">
@@ -159,65 +157,45 @@
                                 <table class="table table-striped big-tableCenter big-table">
                                     <thead>
                                       <tr>
-                                        <th>Marca</th>
-                                        <th>Año</th>
-                                        <th>Pasajeros</th>
-                                        <th>Capacidad</th>
-                                        <th>Seguro</th>
-                                        <th>Tipo de Seguro</th>
-                                        <th>Chofer</th>
-                                        <th>Puertas</th>
-                                        <th>Refaccion</th>
-                                        <th>Tipo de Carro</th>
-                                        <th>Tipo de Gas</th>
-                                        <th>Cilindros</th>
-                                        <th>Dueño</th>
+                                        <th>Nombre</th>
+                                        <th>Paterno</th>
+                                        <th>Materno</th>
+                                        <th>Fotografia</th>
+                                        <th>Celular</th>
+                                        <th>Casa</th>
+                                        <th>Correo</th>
+                                        <th>Fecha Registro</th>
+                                        <th>Direccion</th>
+                                        <th>Tipo</th>
+                                        <th>Instituto</th>
+                                        <th>Hora Ingreso</th>
+                                        <th>Hora Salida</th>
                                       </tr>
                                     </thead>
-                                    <c:forEach var="vehiculo" items="${vehiculos}">
+                                    <c:forEach var="usuario" items="${usuarios}">
                                     <tbody>  
                                       <tr>
-                                        <td><span>${vehiculo.marca}</span></td>
-                                        <td><span>${vehiculo.anio}</span></td>
-                                        <td><span>${vehiculo.pasajeros}</span></td>
-                                        <td><span>${vehiculo.capacidad}</span></td>
-                                        <td><span>${vehiculo.seguro}</span></td>
-                                        <td><span>${vehiculo.tipo_seguro}</span></td>
-                                        <c:forEach var="chofer" items="${choferes}">
-                                        <c:if test="${vehiculo.ID_CHOFER==chofer}">
-                                        <td><span>${chofer.nombre}</span></td>
+                                        <td><span>${usuario.nombre}</span></td>
+                                        <td><span>${usuario.paterno}</span></td>
+                                        <td><span>${usuario.materno}</span></td>
+                                        <td><span>${usuario.fotografia}</span></td>
+                                        <td><span>${usuario.celular}</span></td>
+                                        <td><span>${usuario.casa}</span></td>
+                                        <td><span>${usuario.correo}</span></td>
+                                        <td><span>${usuario.fRegistro}</span></td>
+                                        <c:forEach var="direccion" items="${direcciones}">
+                                        <c:if test="${usuario.ID_DIRECCION==direccion}">
+                                        <td><span>${direccion.calle} ${direccion.colonia} ${direccion.municipio} ${direccion.estado} ${direccion.ciudad} ${direccion.cp} ${direccion.interior} ${direccion.exterior}</span></td>
                                         </c:if>
                                         </c:forEach>
-                                        <c:forEach var="puerta" items="${puertas}">
-                                        <c:if test="${vehiculo.ID_PUERTAS==puerta}">
-                                        <td><span>${puerta.puertas}</span></td>
+                                        <c:forEach var="tipo" items="${tipos}">
+                                        <c:if test="${usuario.ID_TIPO==tipo}">
+                                        <td><span>${tipo.tipo}</span></td>
                                         </c:if>
                                         </c:forEach>
-                                        <c:forEach var="refaccion" items="${refacciones}">
-                                        <c:if test="${vehiculo.ID_REFACCION==refaccion}">
-                                        <td><span>${refaccion.refaccion}</span></td>
-                                        </c:if>
-                                        </c:forEach>
-                                        <c:forEach var="tipocarro" items="${tiposcarro}">
-                                        <c:if test="${vehiculo.ID_TIPOCARRO==tipocarro}">
-                                        <td><span>${tipocarro.tipocarro}</span></td>
-                                        </c:if>
-                                        </c:forEach>
-                                        <c:forEach var="tipogas" items="${tiposgas}">
-                                        <c:if test="${vehiculo.ID_TIPOGAS==tipogas}">
-                                        <td><span>${tipogas.tipogas}</span></td>
-                                        </c:if>
-                                        </c:forEach>
-                                        <c:forEach var="cilindro" items="${cilindros}">
-                                        <c:if test="${vehiculo.ID_CILINDROS==cilindro}">
-                                        <td><span>${cilindro.cilindros}</span></td>
-                                        </c:if>
-                                        </c:forEach>
-                                        <c:forEach var="duenio" items="${duenios}">
-                                        <c:if test="${vehiculo.RFC==duenio}">
-                                        <td><span>${duenio.rfc}</span></td>
-                                        </c:if>
-                                        </c:forEach>
+                                        <td><span>${usuario.instituto}</span></td>
+                                        <td><span>${usuario.hora_ingreso}</span></td>
+                                        <td><span>${usuario.hora_salida}</span></td>
                                       </tr>
                                   </tbody>  
                                   </c:forEach>
@@ -229,7 +207,7 @@
                                         <table class="table table-striped big-tableCenter">
                                             <thead>
                                                 <tr>
-                                                    <th>tabla1</th>
+                                                   
                                                 </tr>
                                             </thead>
                                         </table>
@@ -242,20 +220,16 @@
                                 <table class="table table-striped big-tableCenter big-table">
                                     <thead>
                                       <tr>
-                                        <th>Modelo</th>
-                                        <th>Marca</th>
-                                        <th>Año</th>
-                                        <th>Pasajeros</th>
-                                        <th>Capacidad</th>
-                                        <th>Seguro</th>
-                                        <th>Tipo de Seguro</th>
-                                        <th>Chofer</th>
-                                        <th>Puertas</th>
-                                        <th>Refaccion</th>
-                                        <th>Tipo de Carro</th>
-                                        <th>Tipo de Gas</th>
-                                        <th>Cilindros</th>
-                                        <th>Dueño</th>
+                                        <th>Nombre</th>
+                                        <th>Paterno</th>
+                                        <th>Materno</th>
+                                        <th>Fotografia</th>
+                                        <th>Celular</th>
+                                        <th>Casa</th>
+                                        <th>Correo</th>
+                                        <th>Instituto</th>
+                                        <th>Hora Ingreso</th>
+                                        <th>Hora Salida</th>
                                       </tr>
                                     </thead>
                                     
@@ -285,20 +259,16 @@
                                 <table class="table table-striped big-tableCenter big-table">
                                     <thead>
                                       <tr>
-                                        <th>Modelo</th>
-                                        <th>Marca</th>
-                                        <th>Año</th>
-                                        <th>Pasajeros</th>
-                                        <th>Capacidad</th>
-                                        <th>Seguro</th>
-                                        <th>Tipo de Seguro</th>
-                                        <th>Chofer</th>
-                                        <th>Puertas</th>
-                                        <th>Refaccion</th>
-                                        <th>Tipo de Carro</th>
-                                        <th>Tipo de Gas</th>
-                                        <th>Cilindros</th>
-                                        <th>Dueño</th>
+                                        <th>Nombre</th>
+                                        <th>Paterno</th>
+                                        <th>Materno</th>
+                                        <th>Fotografia</th>
+                                        <th>Celular</th>
+                                        <th>Casa</th>
+                                        <th>Correo</th>
+                                        <th>Instituto</th>
+                                        <th>Hora Ingreso</th>
+                                        <th>Hora Salida</th>
                                       </tr>
                                     </thead>
                                     

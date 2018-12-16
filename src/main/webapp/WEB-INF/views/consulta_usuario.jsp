@@ -147,9 +147,7 @@
             <div class="panel with-nav-tabs panel-primary">
                 <div class="panel-heading">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1primary" data-toggle="tab">Todos usuarios</a></li>
-                        <li><a href="#tab2primary" data-toggle="tab">consulta2</a></li>
-                        <li><a href="#tab3primary" data-toggle="tab">consulta3</a></li>
+                        <li class="active"><a href="#tab1primary" data-toggle="tab">USUARIOS</a></li>
                     </ul>
                 </div>
                 <div class="panel-body">
@@ -209,7 +207,7 @@
                                         <table class="table table-striped big-tableCenter">
                                             <thead>
                                                 <tr>
-                                                    <th>tabla1</th>
+                                                   
                                                 </tr>
                                             </thead>
                                         </table>
