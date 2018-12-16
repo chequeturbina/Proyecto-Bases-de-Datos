@@ -59,8 +59,21 @@ public class Usuario implements Serializable{
 	  @JoinColumn(name="ID_DIRECCION")
 	private Direccion ID_DIRECCION;
 	
-	 @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	    private List<Viaje> viajes = new ArrayList<>();
+	/*Contador de viajes que haga el usuario*/
+	private int contadorusuario;
+	
+	
+
+	public int getContadorusuario() {
+		return contadorusuario;
+	}
+
+
+
+	public void setContadorusuario(int contadorusuario) {
+		this.contadorusuario = contadorusuario;
+	}
+
 
 
 	public long getID_USUARIO() {
@@ -94,20 +107,6 @@ public class Usuario implements Serializable{
 	public void setPaterno(String paterno) {
 		this.paterno = paterno;
 	}
-
-
-
-	public List<Viaje> getViajes() {
-		return viajes;
-	}
-
-
-
-	public void setViajes(List<Viaje> viajes) {
-		this.viajes = viajes;
-	}
-
-
 
 	public String getMaterno() {
 		return materno;

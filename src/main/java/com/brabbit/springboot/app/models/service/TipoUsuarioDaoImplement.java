@@ -36,5 +36,9 @@ public class TipoUsuarioDaoImplement implements InterfaceTipoDao {
 		return em.find(TipoUsuario.class, tipo);
 	}
 
+	public TipoUsuario findid(TipoUsuario id_TIPO) {
+		return em.find(TipoUsuario.class, id_TIPO);
+	}
+
 
 }

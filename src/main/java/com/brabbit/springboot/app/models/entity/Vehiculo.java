@@ -30,9 +30,9 @@ public class Vehiculo implements Serializable{
 	private int pasajeros;
 	private int capacidad;
 	
-	@Column(nullable = true)
+	
 	private String seguro;
-	@Column(nullable = true)
+	
 	private String tipo_seguro;
 	
 	@OneToOne(cascade={CascadeType.ALL})

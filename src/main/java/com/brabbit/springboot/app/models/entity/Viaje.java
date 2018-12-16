@@ -25,22 +25,72 @@ public class Viaje implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ID_VIAJE;
 	
-	private Time tiempo;
+	private int distancia;
+	private int tiempo;
 	private int pasajeros;
-	private String origen;
-	private String destino;
-	private int cobro;
-
-	@ManyToMany(mappedBy = "viajes")
-    private List<Usuario> usuario = new ArrayList<>();
 	
+	/*Estos datos son para tener el string de a donde se dirige el usuario, no sirven mas que para mostrar*/
+	private String origin;
+	private String destiny;
+	
+	@OneToOne(cascade={CascadeType.ALL})
+	  @JoinColumn(name="ID_ORIGEN")
+	private Origen ID_ORIGEN;
+	
+	@OneToOne(cascade={CascadeType.ALL})
+	  @JoinColumn(name="ID_DESTINO")
+	private Destino ID_DESTINO;
+
 	@OneToOne(cascade={CascadeType.ALL})
 	  @JoinColumn(name="ID_CHOFER")
 	private Chofer ID_CHOFER;
 	
+	@OneToOne(cascade={CascadeType.ALL})
+	  @JoinColumn(name="ID_USUARIO")
+	private Usuario ID_USUARIO;
+	
+	/*cobro sera objeto de viaje, e ira conectado al usuario*/
+	private int cobro;
 	
 	
-	public long getID_VIAJE() {
+	
+		public int getCobro() {
+		return cobro;
+	}
+
+
+
+	public String getOrigin() {
+			return origin;
+		}
+
+
+
+		public void setOrigin(String origin) {
+			this.origin = origin;
+		}
+
+
+
+		public String getDestiny() {
+			return destiny;
+		}
+
+
+
+		public void setDestiny(String destiny) {
+			this.destiny = destiny;
+		}
+
+
+
+	public void setCobro(int cobro) {
+		this.cobro = cobro;
+	}
+
+
+
+		public long getID_VIAJE() {
 		return ID_VIAJE;
 	}
 
@@ -52,13 +102,25 @@ public class Viaje implements Serializable{
 
 
 
-	public Time getTiempo() {
+	public int getDistancia() {
+		return distancia;
+	}
+
+
+
+	public void setDistancia(int distancia) {
+		this.distancia = distancia;
+	}
+
+
+
+	public int getTiempo() {
 		return tiempo;
 	}
 
 
 
-	public void setTiempo(Time tiempo) {
+	public void setTiempo(int tiempo) {
 		this.tiempo = tiempo;
 	}
 
@@ -76,50 +138,26 @@ public class Viaje implements Serializable{
 
 
 
-	public String getOrigen() {
-		return origen;
+	public Origen getID_ORIGEN() {
+		return ID_ORIGEN;
 	}
 
 
 
-	public void setOrigen(String origen) {
-		this.origen = origen;
+	public void setID_ORIGEN(Origen iD_ORIGEN) {
+		ID_ORIGEN = iD_ORIGEN;
 	}
 
 
 
-	public String getDestino() {
-		return destino;
+	public Destino getID_DESTINO() {
+		return ID_DESTINO;
 	}
 
 
 
-	public void setDestino(String destino) {
-		this.destino = destino;
-	}
-
-
-
-	public int getCobro() {
-		return cobro;
-	}
-
-
-
-	public void setCobro(int cobro) {
-		this.cobro = cobro;
-	}
-
-
-
-	public List<Usuario> getUsuario() {
-		return usuario;
-	}
-
-
-
-	public void setUsuario(List<Usuario> usuario) {
-		this.usuario = usuario;
+	public void setID_DESTINO(Destino iD_DESTINO) {
+		ID_DESTINO = iD_DESTINO;
 	}
 
 
@@ -136,7 +174,19 @@ public class Viaje implements Serializable{
 
 
 
-	/**
+	public Usuario getID_USUARIO() {
+		return ID_USUARIO;
+	}
+
+
+
+	public void setID_USUARIO(Usuario iD_USUARIO) {
+		ID_USUARIO = iD_USUARIO;
+	}
+
+
+
+		/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;

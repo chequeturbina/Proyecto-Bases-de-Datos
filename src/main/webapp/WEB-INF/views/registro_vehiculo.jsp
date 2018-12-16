@@ -160,14 +160,14 @@
                             <div class="form-group row">
                                     <label for="full_name" class="col-md-4 col-form-label text-md-right">Seguro</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="seguro" class="form-control" name="seguro" placeholder="NOMBRE DEL SEGURO">
+                                        <input type="text" id="seguro" class="form-control" name="seguro" placeholder="NOMBRE DEL SEGURO" required>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group row">
                                     <label for="full_name" class="col-md-4 col-form-label text-md-right">Cobertura</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="cobertura" class="form-control" name="cobertura" placeholder="COBERTURA DEL SEGURO">
+                                        <input type="text" id="cobertura" class="form-control" name="cobertura" placeholder="COBERTURA DEL SEGURO" required>
                                     </div>
                                 </div>
                             

@@ -80,11 +80,11 @@
                         <div class="card-header">VIAJES</div>
                         <div class="card-body">
                           
-<button type="button" class="btn btn-primary" onclick="window.location='/consulta_duenio';">VIAJE SOLO</button>
+<button type="button" class="btn btn-primary" onclick="window.location='/viaje_solo';">VIAJE SOLO</button>
 <br></br>
 <button type="button" class="btn btn-success" onclick="window.location='/consulta_duenio';">VIAJE COMPARTIDO</button>
 <br></br>
-<button type="button" class="btn btn-danger" onclick="window.location='/consulta_duenio';">VIAJE CHOFER</button>
+<button type="button" class="btn btn-danger" onclick="window.location='/viaje_chofer';">VIAJE CHOFER</button>
 <br></br>
 
                         </div>

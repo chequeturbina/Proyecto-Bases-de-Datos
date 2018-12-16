@@ -53,8 +53,53 @@ public class Chofer implements Serializable{
 	  @JoinColumn(name="ID_DIRECCION")
 	private Direccion ID_DIRECCION;
 	
+	/*Contador para saber el numero de viajes que ha hecho el chofer*/
+	private int contadorchofer;
+	
+	/*Ganancias que ha generado el chofer de los viajes*/
+	private int ganancia;
+	
+	/*Bono de los 20 viajes*/
+	private int bono;
 	
 	
+	
+	public int getBono() {
+		return bono;
+	}
+
+
+
+	public void setBono(int bono) {
+		this.bono = bono;
+	}
+
+
+
+	public int getContadorchofer() {
+		return contadorchofer;
+	}
+
+
+
+	public void setContadorchofer(int contadorchofer) {
+		this.contadorchofer = contadorchofer;
+	}
+
+
+
+	public int getGanancia() {
+		return ganancia;
+	}
+
+
+
+	public void setGanancia(int ganancia) {
+		this.ganancia = ganancia;
+	}
+
+
+
 	public long getID_CHOFER() {
 		return ID_CHOFER;
 	}
