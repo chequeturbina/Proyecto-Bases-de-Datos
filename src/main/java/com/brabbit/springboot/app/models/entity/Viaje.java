@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -45,7 +46,7 @@ public class Viaje implements Serializable{
 	  @JoinColumn(name="ID_CHOFER")
 	private Chofer ID_CHOFER;
 	
-	@OneToOne(cascade={CascadeType.ALL})
+	@ManyToOne(cascade={CascadeType.ALL})
 	  @JoinColumn(name="ID_USUARIO")
 	private Usuario ID_USUARIO;
 	
