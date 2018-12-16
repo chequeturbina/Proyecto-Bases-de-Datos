@@ -59,6 +59,22 @@ public class Usuario implements Serializable{
 	  @JoinColumn(name="ID_DIRECCION")
 	private Direccion ID_DIRECCION;
 	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Viaje> viajes = new ArrayList<>();
+	
+	
+	
+	public List<Viaje> getViajes() {
+		return viajes;
+	}
+
+
+
+	public void setViajes(List<Viaje> viajes) {
+		this.viajes = viajes;
+	}
+
+
 	/*Contador de viajes que haga el usuario*/
 	private int contadorusuario;
 	

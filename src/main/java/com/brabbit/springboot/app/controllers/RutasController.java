@@ -536,10 +536,12 @@ public class RutasController {
      		   	    			
      		   	    		Integer cobro = 15;
 	    	  				viaje.setCobro(cobro);
-	    	  				viaje.setID_USUARIO(usuario);
+	    	  				
 	    	  				viajeDao.save(viaje);
+	    	  				
 	    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
-	    		  	
+	    	  				usuario.getViajes().add(viaje);
+	    	  				usuarioDao.save(usuario);
 	    	  				ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
 	    	  				ra.addFlashAttribute("pago", cobro);
 	    	  				return"redirect:/viaje_exitoso";
@@ -555,10 +557,12 @@ public class RutasController {
      		   	    		viaje.setDestiny(destiny);
      		   	    		Integer cobrofinal = 15 + (calculodistancia * 8);
 	  						viaje.setCobro(cobrofinal);
-	  						viaje.setID_USUARIO(usuario);
+	  						
 	  						viajeDao.save(viaje);
-	  						usuarioDao.update(contador, usuario.getID_USUARIO());
-		  	
+	    	  				
+	    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+	    	  				usuario.getViajes().add(viaje);
+	    	  				usuarioDao.save(usuario);
 	  						ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
 	  						ra.addFlashAttribute("pago", cobrofinal);
 	  						return"redirect:/viaje_exitoso";
@@ -595,13 +599,14 @@ public class RutasController {
      		   	    								Integer porcentaje = 15;
      		   	    								Integer porcen = (cobromedio*porcentaje)/100;
      		   	    								Integer cobrofinal = 10 - porcen;
-		        
      		   	    								viaje.setCobro(cobrofinal);
-     		   	    								viaje.setID_USUARIO(usuario);
-     		   	    								viajeDao.save(viaje);
      		   	    								
-     		   	    								usuarioDao.update(contador, usuario.getID_USUARIO());
-     						    	        	
+     		   	    								
+     		   	    								viajeDao.save(viaje);
+     		   		    	  				
+     		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+     		   	    									usuario.getViajes().add(viaje);
+     		   	    									usuarioDao.save(usuario);
      		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
      		   	    								ra.addFlashAttribute("pago", cobrofinal);
      		   	    								return"redirect:/viaje_exitoso";
@@ -621,11 +626,11 @@ public class RutasController {
      		   	    								Integer cobrofinal = 10 - porcen;
 			        
      		   	    								viaje.setCobro(cobrofinal);
-     		   	    								viaje.setID_USUARIO(usuario);
      		   	    								viajeDao.save(viaje);
-    		  	
+     		   		    	  				
      		   	    								usuarioDao.update(contador, usuario.getID_USUARIO());
-    	        	
+     		   	    								usuario.getViajes().add(viaje);
+     		   	    								usuarioDao.save(usuario);
      		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
      		   	    								ra.addFlashAttribute("pago", cobrofinal);
      		   	    								return"redirect:/viaje_exitoso";
@@ -648,11 +653,11 @@ public class RutasController {
      		   	    								Integer cobrofinal = cobromedio - porcen;
 		        
      		   	    								viaje.setCobro(cobrofinal);
-     		   	    								viaje.setID_USUARIO(usuario);
      		   	    								viajeDao.save(viaje);
-		  	
+     		   		    	  				
      		   	    								usuarioDao.update(contador, usuario.getID_USUARIO());
-											
+     		   	    								usuario.getViajes().add(viaje);
+     		   	    								usuarioDao.save(usuario);
      		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
      		   	    								ra.addFlashAttribute("pago", cobrofinal);
      		   	    								return"redirect:/viaje_exitoso";
@@ -672,11 +677,11 @@ public class RutasController {
      		   	    								Integer cobrofinal = cobromedio - porcen;
 		        
      		   	    								viaje.setCobro(cobrofinal);
-     		   	    								viaje.setID_USUARIO(usuario);
      		   	    								viajeDao.save(viaje);
-		  	
+     		   		    	  				
      		   	    								usuarioDao.update(contador, usuario.getID_USUARIO());
-	        	
+     		   	    								usuario.getViajes().add(viaje);
+     		   	    								usuarioDao.save(usuario);
      		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
      		   	    								ra.addFlashAttribute("pago", cobrofinal);
      		   	    								return"redirect:/viaje_exitoso";
@@ -708,11 +713,11 @@ public class RutasController {
 	   	    								Integer cobrofinal = 15 - porcen;
     
 	   	    								viaje.setCobro(cobrofinal);
-	   	    								viaje.setID_USUARIO(usuario);
 	   	    								viajeDao.save(viaje);
-	
-	   	    								usuarioDao.update(contador, usuario.getID_USUARIO());
-	
+	   	    		    	  				
+	   	    		    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+	   	    		    	  				usuario.getViajes().add(viaje);
+	   	    		    	  				usuarioDao.save(usuario);
 	   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
 	   	    								ra.addFlashAttribute("pago", cobrofinal);
 	   	    								return"redirect:/viaje_exitoso";
@@ -732,11 +737,11 @@ public class RutasController {
    	    									Integer cobrofinal = 15 - porcen;
     
    	    									viaje.setCobro(cobrofinal);
-   	    									viaje.setID_USUARIO(usuario);
    	    									viajeDao.save(viaje);
-	
-   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
-	
+   	    			    	  				
+   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+   	    			    	  				usuario.getViajes().add(viaje);
+   	    			    	  				usuarioDao.save(usuario);
    	    									ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
    	    									ra.addFlashAttribute("pago", cobrofinal);
    	    									return"redirect:/viaje_exitoso";
@@ -760,11 +765,11 @@ public class RutasController {
 	    									Integer cobrofinal = cobromedio - porcen;
 
 	    									viaje.setCobro(cobrofinal);
-	    									viaje.setID_USUARIO(usuario);
 	    									viajeDao.save(viaje);
-
-	    									usuarioDao.update(contador, usuario.getID_USUARIO());
-
+	    			    	  				
+	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+	    			    	  				usuario.getViajes().add(viaje);
+	    			    	  				usuarioDao.save(usuario);
 	    									ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
 	    									ra.addFlashAttribute("pago", cobrofinal);
 	    									return"redirect:/viaje_exitoso";
@@ -784,11 +789,11 @@ public class RutasController {
     										Integer cobrofinal = cobromedio - porcen;
 
     										viaje.setCobro(cobrofinal);
-    										viaje.setID_USUARIO(usuario);
     										viajeDao.save(viaje);
-
-    										usuarioDao.update(contador, usuario.getID_USUARIO());
-
+    				    	  				
+    				    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+    				    	  				usuario.getViajes().add(viaje);
+    				    	  				usuarioDao.save(usuario);
     										ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
     										ra.addFlashAttribute("pago", cobrofinal);
     										return"redirect:/viaje_exitoso";
@@ -990,9 +995,11 @@ public class RutasController {
      		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
 		        
      		   	    									viaje.setCobro(cobrocompartido);
-     		   	    									viaje.setID_USUARIO(usuario);
      		   	    									viajeDao.save(viaje);
+     		   	    	    	  				
      		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+     		   	    									usuario.getViajes().add(viaje);
+     		   	    									usuarioDao.save(usuario);
      		   	    									ra.addFlashAttribute("pago", cobrocompartido);
      		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
      		   	    									break;
@@ -1004,9 +1011,11 @@ public class RutasController {
      		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
 	        
      		   	    									viaje.setCobro(cobrocompartido2);
-     		   	    									viaje.setID_USUARIO(usuario);
      		   	    									viajeDao.save(viaje);
-     		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+     		   	    	    	  				
+ 		   	    										usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    										usuario.getViajes().add(viaje);
+ 		   	    										usuarioDao.save(usuario);
      		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
      		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + randomNum + " " + "personas");
      		   	    									break;
@@ -1018,9 +1027,11 @@ public class RutasController {
      		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
         
      		   	    									viaje.setCobro(cobrocompartido3);
-     		   	    									viaje.setID_USUARIO(usuario);
      		   	    									viajeDao.save(viaje);
+     		   	    	    	  				
      		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+     		   	    									usuario.getViajes().add(viaje);
+     		   	    									usuarioDao.save(usuario);
      		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
      		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
      		   	    									break;
@@ -1052,9 +1063,11 @@ public class RutasController {
  		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
 	        
  		   	    									viaje.setCobro(cobrocompartido);
- 		   	    									viaje.setID_USUARIO(usuario);
  		   	    									viajeDao.save(viaje);
+ 		   	    	    	  				
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									usuario.getViajes().add(viaje);
+ 		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido);
  		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
  		   	    									break;
@@ -1066,9 +1079,11 @@ public class RutasController {
  		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
         
  		   	    									viaje.setCobro(cobrocompartido2);
- 		   	    									viaje.setID_USUARIO(usuario);
  		   	    									viajeDao.save(viaje);
+ 		   	    	    	  				
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+	   	    										usuario.getViajes().add(viaje);
+	   	    										usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
  		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
  		   	    									break;
@@ -1080,9 +1095,11 @@ public class RutasController {
  		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
     
  		   	    									viaje.setCobro(cobrocompartido3);
- 		   	    									viaje.setID_USUARIO(usuario);
  		   	    									viajeDao.save(viaje);
- 		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    	    	  				
+	   	    										usuarioDao.update(contador, usuario.getID_USUARIO());
+	   	    										usuario.getViajes().add(viaje);
+	   	    										usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
  		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
  		   	    									break;
@@ -1116,9 +1133,11 @@ public class RutasController {
  		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
 	        
  		   	    									viaje.setCobro(cobrocompartido);
- 		   	    									viaje.setID_USUARIO(usuario);
  		   	    									viajeDao.save(viaje);
+ 		   	    	    	  				
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									usuario.getViajes().add(viaje);
+ 		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido);
  		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
  		   	    									break;
@@ -1130,9 +1149,11 @@ public class RutasController {
  		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
         
  		   	    									viaje.setCobro(cobrocompartido2);
- 		   	    									viaje.setID_USUARIO(usuario);
  		   	    									viajeDao.save(viaje);
+ 		   	    	    	  				
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									usuario.getViajes().add(viaje);
+ 		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
  		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
  		   	    									break;
@@ -1144,9 +1165,11 @@ public class RutasController {
  		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
     
  		   	    									viaje.setCobro(cobrocompartido3);
- 		   	    									viaje.setID_USUARIO(usuario);
  		   	    									viajeDao.save(viaje);
+ 		   	    	    	  				
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									usuario.getViajes().add(viaje);
+ 		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
  		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
  		   	    									break;
@@ -1177,9 +1200,11 @@ public class RutasController {
  		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
 	        
  		   	    									viaje.setCobro(cobrocompartido);
- 		   	    									viaje.setID_USUARIO(usuario);
  		   	    									viajeDao.save(viaje);
+ 		   	    	    	  				
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									usuario.getViajes().add(viaje);
+ 		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido);
  		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
  		   	    									break;
@@ -1191,9 +1216,11 @@ public class RutasController {
  		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
         
  		   	    									viaje.setCobro(cobrocompartido2);
- 		   	    									viaje.setID_USUARIO(usuario);
  		   	    									viajeDao.save(viaje);
+ 		   	    	    	  				
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+ 		   	    									usuario.getViajes().add(viaje);
+ 		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
  		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
  		   	    									break;
@@ -1205,9 +1232,11 @@ public class RutasController {
  		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
     
  		   	    									viaje.setCobro(cobrocompartido3);
- 		   	    									viaje.setID_USUARIO(usuario);
  		   	    									viajeDao.save(viaje);
+ 		   	    	    	  				
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+	   	    										usuario.getViajes().add(viaje);
+	   	    										usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
  		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
  		   	    									break;
@@ -1250,9 +1279,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
         
 		   	    									viaje.setCobro(cobrocompartido);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido);
 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;
@@ -1264,9 +1295,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
     
 		   	    									viaje.setCobro(cobrocompartido2);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;
@@ -1278,9 +1311,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
 
 		   	    									viaje.setCobro(cobrocompartido3);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;
@@ -1311,9 +1346,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
         
 		   	    									viaje.setCobro(cobrocompartido);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido);
 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;
@@ -1325,9 +1362,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
     
 		   	    									viaje.setCobro(cobrocompartido2);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;
@@ -1339,9 +1378,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
 
 		   	    									viaje.setCobro(cobrocompartido3);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
 		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;
@@ -1376,9 +1417,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
         
 		   	    									viaje.setCobro(cobrocompartido);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido);
 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;
@@ -1390,9 +1433,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
     
 		   	    									viaje.setCobro(cobrocompartido2);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
 		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;
@@ -1404,9 +1449,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
 
 		   	    									viaje.setCobro(cobrocompartido3);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;
@@ -1437,9 +1484,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido = cobrofinal - porcencompartido;
         
 		   	    									viaje.setCobro(cobrocompartido);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido);
 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;
@@ -1451,9 +1500,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
     
 		   	    									viaje.setCobro(cobrocompartido2);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;
@@ -1465,9 +1516,11 @@ public class RutasController {
 		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
 
 		   	    									viaje.setCobro(cobrocompartido3);
-		   	    									viaje.setID_USUARIO(usuario);
 		   	    									viajeDao.save(viaje);
-		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				
+		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
+		   	    			    	  				usuario.getViajes().add(viaje);
+		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
 		   	    									break;

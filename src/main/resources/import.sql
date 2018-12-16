@@ -36,3 +36,4 @@ insert into ORIGEN(origen)VALUES('NO');
 insert into DESTINO(destino)VALUES('SI');
 insert into DESTINO(destino)VALUES('NO');
 
+

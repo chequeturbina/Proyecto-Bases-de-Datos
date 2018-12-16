@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import com.brabbit.springboot.app.models.entity.Usuario;
 
 
 @Entity
@@ -46,10 +47,21 @@ public class Viaje implements Serializable{
 	  @JoinColumn(name="ID_CHOFER")
 	private Chofer ID_CHOFER;
 	
-	@ManyToOne(cascade={CascadeType.ALL})
-	  @JoinColumn(name="ID_USUARIO")
-	private Usuario ID_USUARIO;
+	@ManyToMany(mappedBy = "viajes")
+    private List<Usuario> usuario = new ArrayList<>();
 	
+	public List<Usuario> getUsuario() {
+		return usuario;
+	}
+
+
+
+	public void setUsuario(List<Usuario> usuario) {
+		this.usuario = usuario;
+	}
+
+
+
 	/*cobro sera objeto de viaje, e ira conectado al usuario*/
 	private int cobro;
 	
@@ -171,18 +183,6 @@ public class Viaje implements Serializable{
 
 	public void setID_CHOFER(Chofer iD_CHOFER) {
 		ID_CHOFER = iD_CHOFER;
-	}
-
-
-
-	public Usuario getID_USUARIO() {
-		return ID_USUARIO;
-	}
-
-
-
-	public void setID_USUARIO(Usuario iD_USUARIO) {
-		ID_USUARIO = iD_USUARIO;
 	}
 
 
