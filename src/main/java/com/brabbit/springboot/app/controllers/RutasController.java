@@ -921,7 +921,6 @@ public class RutasController {
 	public String PedirViajeCompartido(@RequestParam("correo")  String correo,
 		 	                 @RequestParam("distancia")  String distancia,
 	 	                     @RequestParam("tiempo")  String tiempo,
-	 	                     
 	 	                     @RequestParam("origen")  long origen,
 	 	                     @RequestParam("origin")  String origin,
 	 	                     @RequestParam("destino")  long destino,
@@ -985,12 +984,16 @@ public class RutasController {
 		        
      		   	    									viaje.setCobro(cobrocompartido);
      		   	    									viajeDao.save(viaje);
-     		   	    	    	  				
+     		   	    									Integer random =ThreadLocalRandom.current().nextInt(2, 200);
+     		   	    									Integer random2 =ThreadLocalRandom.current().nextInt(2, 200);
+     		   	    									Integer random3 =ThreadLocalRandom.current().nextInt(1, 3);
+     		   	    									Integer random4 =ThreadLocalRandom.current().nextInt(1, 3);
+     		   	    									PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere",random4,"somewhere",10);
      		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
      		   	    									usuario.getViajes().add(viaje);
      		   	    									usuarioDao.save(usuario);
      		   	    									ra.addFlashAttribute("pago", cobrocompartido);
-     		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+     		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
      		   	    									break;
      		   	    								
      		   	    								case 3:
@@ -998,15 +1001,23 @@ public class RutasController {
      		   	    									Integer porcentajecompartido2 = 20;
      		   	    									Integer porcencompartido2 = (cobrofinal*porcentajecompartido2)/100;
      		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
-	        
+     		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    										random2 =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    										random3 =ThreadLocalRandom.current().nextInt(1, 3);
+ 		   	    										random4 =ThreadLocalRandom.current().nextInt(1, 3);
+ 		   	    										PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",20);
+ 		   	    										random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    										random2 =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    										random3 =ThreadLocalRandom.current().nextInt(1, 3);
+ 		   	    										random4 =ThreadLocalRandom.current().nextInt(1, 3);
+ 		   	    										PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",20);
      		   	    									viaje.setCobro(cobrocompartido2);
      		   	    									viajeDao.save(viaje);
-     		   	    	    	  				
- 		   	    										usuarioDao.update(contador, usuario.getID_USUARIO());
+     		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
  		   	    										usuario.getViajes().add(viaje);
  		   	    										usuarioDao.save(usuario);
      		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
-     		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + randomNum + " " + "personas");
+     		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
      		   	    									break;
      		   	    								
      		   	    								case 4:
@@ -1014,15 +1025,29 @@ public class RutasController {
      		   	    									Integer porcentajecompartido3 = 30;
      		   	    									Integer porcencompartido3 = (cobrofinal*porcentajecompartido3)/100;
      		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
-        
      		   	    									viaje.setCobro(cobrocompartido3);
      		   	    									viajeDao.save(viaje);
-     		   	    	    	  				
+     		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+     		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",30);
+	   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	   	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",30);
+	   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+		   	    										random2 =ThreadLocalRandom.current().nextInt(2, 200);
+		   	    										random3 =ThreadLocalRandom.current().nextInt(1, 3);
+		   	    										random4 =ThreadLocalRandom.current().nextInt(1, 3);
+		   	    										PedirViaje2("Nullam@interdumNunc.net",random+"",random2+"",random3,"nowhere4",random4,"somewhere4",30);
+		   	    										
      		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
      		   	    									usuario.getViajes().add(viaje);
      		   	    									usuarioDao.save(usuario);
      		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
-     		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+     		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
      		   	    									break;
      		   	    								}
      		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
@@ -1042,7 +1067,7 @@ public class RutasController {
      		   	    								Integer porcentaje = 10;
      		   	    								Integer porcen = (cobromedio*porcentaje)/100;
      		   	    								Integer cobrofinal = 10 - porcen;
-			        
+     		   	    								
      		   	    							switch(randomNum) {
  		   	    								
  		   	    								case 2: 
@@ -1053,12 +1078,17 @@ public class RutasController {
 	        
  		   	    									viaje.setCobro(cobrocompartido);
  		   	    									viajeDao.save(viaje);
- 		   	    	    	  				
+ 		   	    									Integer random =ThreadLocalRandom.current().nextInt(2, 200);
+		   	    									Integer random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											Integer random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											Integer random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",10);
+	    											
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
  		   	    									usuario.getViajes().add(viaje);
  		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido);
- 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
  		   	    									break;
  		   	    								
  		   	    								case 3:
@@ -1066,7 +1096,17 @@ public class RutasController {
  		   	    									Integer porcentajecompartido2 = 20;
  		   	    									Integer porcencompartido2 = (cobrofinal*porcentajecompartido2)/100;
  		   	    									Integer cobrocompartido2 = cobrofinal - porcencompartido2;
-        
+ 		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",20);
+	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",20);
+	    											
  		   	    									viaje.setCobro(cobrocompartido2);
  		   	    									viajeDao.save(viaje);
  		   	    	    	  				
@@ -1074,7 +1114,7 @@ public class RutasController {
 	   	    										usuario.getViajes().add(viaje);
 	   	    										usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
- 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
  		   	    									break;
  		   	    								
  		   	    								case 4:
@@ -1085,12 +1125,27 @@ public class RutasController {
     
  		   	    									viaje.setCobro(cobrocompartido3);
  		   	    									viajeDao.save(viaje);
- 		   	    	    	  				
+ 		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",30);
+	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",30);
+	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("Nullam@interdumNunc.net",random+"",random2+"",random3,"nowhere4",random4,"somewhere4",30);
+   	    										
 	   	    										usuarioDao.update(contador, usuario.getID_USUARIO());
 	   	    										usuario.getViajes().add(viaje);
 	   	    										usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
- 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
  		   	    									break;
  		   	    								}
  		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
@@ -1123,12 +1178,17 @@ public class RutasController {
 	        
  		   	    									viaje.setCobro(cobrocompartido);
  		   	    									viajeDao.save(viaje);
- 		   	    	    	  				
+ 		   	    									Integer random =ThreadLocalRandom.current().nextInt(2, 200);
+		   	    									Integer random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											Integer random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											Integer random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",10);
+	    										
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
  		   	    									usuario.getViajes().add(viaje);
  		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido);
- 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
  		   	    									break;
  		   	    								
  		   	    								case 3:
@@ -1139,12 +1199,22 @@ public class RutasController {
         
  		   	    									viaje.setCobro(cobrocompartido2);
  		   	    									viajeDao.save(viaje);
- 		   	    	    	  				
+ 		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",20);
+	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",20);
+	    											
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
  		   	    									usuario.getViajes().add(viaje);
  		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
- 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
  		   	    									break;
  		   	    								
  		   	    								case 4:
@@ -1152,7 +1222,22 @@ public class RutasController {
  		   	    									Integer porcentajecompartido3 = 30;
  		   	    									Integer porcencompartido3 = (cobrofinal*porcentajecompartido3)/100;
  		   	    									Integer cobrocompartido3 = cobrofinal - porcencompartido3;
-    
+ 		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",30);
+	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",30);
+	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("Nullam@interdumNunc.net",random+"",random2+"",random3,"nowhere4",random4,"somewhere4",30);
+   	    										
  		   	    									viaje.setCobro(cobrocompartido3);
  		   	    									viajeDao.save(viaje);
  		   	    	    	  				
@@ -1160,7 +1245,7 @@ public class RutasController {
  		   	    									usuario.getViajes().add(viaje);
  		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
- 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
  		   	    									break;
  		   	    								}
  		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
@@ -1190,12 +1275,17 @@ public class RutasController {
 	        
  		   	    									viaje.setCobro(cobrocompartido);
  		   	    									viajeDao.save(viaje);
- 		   	    	    	  				
+ 		   	    									Integer random =ThreadLocalRandom.current().nextInt(2, 200);
+		   	    									Integer random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											Integer random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											Integer random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",10);
+	    											
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
  		   	    									usuario.getViajes().add(viaje);
  		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido);
- 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
  		   	    									break;
  		   	    								
  		   	    								case 3:
@@ -1206,12 +1296,22 @@ public class RutasController {
         
  		   	    									viaje.setCobro(cobrocompartido2);
  		   	    									viajeDao.save(viaje);
- 		   	    	    	  				
+ 		   	    								random =ThreadLocalRandom.current().nextInt(2, 200);
+		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",20);
+	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",20);
+	    											
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
  		   	    									usuario.getViajes().add(viaje);
  		   	    									usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
- 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
  		   	    									break;
  		   	    								
  		   	    								case 4:
@@ -1222,12 +1322,27 @@ public class RutasController {
     
  		   	    									viaje.setCobro(cobrocompartido3);
  		   	    									viajeDao.save(viaje);
- 		   	    	    	  				
+ 		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",30);
+	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",30);
+	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("Nullam@interdumNunc.net",random+"",random2+"",random3,"nowhere4",random4,"somewhere4",30);
+   	    										
  		   	    									usuarioDao.update(contador, usuario.getID_USUARIO());
 	   	    										usuario.getViajes().add(viaje);
 	   	    										usuarioDao.save(usuario);
  		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
- 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+ 		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
  		   	    									break;
  		   	    								}
  		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
@@ -1269,12 +1384,17 @@ public class RutasController {
         
 		   	    									viaje.setCobro(cobrocompartido);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									Integer random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									Integer random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											Integer random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											Integer random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",10);
+   	    											
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido);
-		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								
 		   	    								case 3:
@@ -1285,12 +1405,22 @@ public class RutasController {
     
 		   	    									viaje.setCobro(cobrocompartido2);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",20);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",20);
+   	    											
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
-		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								
 		   	    								case 4:
@@ -1301,12 +1431,27 @@ public class RutasController {
 
 		   	    									viaje.setCobro(cobrocompartido3);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",30);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",30);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	   	    										random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	   	    										random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    										random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    										PedirViaje2("Nullam@interdumNunc.net",random+"",random2+"",random3,"nowhere4",random4,"somewhere4",30);
+	   	    										
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
-		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								}
 		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
@@ -1336,12 +1481,17 @@ public class RutasController {
         
 		   	    									viaje.setCobro(cobrocompartido);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									Integer random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									Integer random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											Integer random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											Integer random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",10);
+   	    											
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido);
-		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								
 		   	    								case 3:
@@ -1352,12 +1502,23 @@ public class RutasController {
     
 		   	    									viaje.setCobro(cobrocompartido2);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",20);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",20);
+   	    											
+	   	    										
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
-		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								
 		   	    								case 4:
@@ -1368,12 +1529,27 @@ public class RutasController {
 
 		   	    									viaje.setCobro(cobrocompartido3);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",30);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",30);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	   	    										random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	   	    										random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    										random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    										PedirViaje2("Nullam@interdumNunc.net",random+"",random2+"",random3,"nowhere4",random4,"somewhere4",30);
+	   	    										
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
-		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								}
 		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
@@ -1407,12 +1583,17 @@ public class RutasController {
         
 		   	    									viaje.setCobro(cobrocompartido);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									Integer random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									Integer random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											Integer random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											Integer random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",10);
+   	    											
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido);
-		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								
 		   	    								case 3:
@@ -1423,12 +1604,22 @@ public class RutasController {
     
 		   	    									viaje.setCobro(cobrocompartido2);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",20);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",20);
+   	    											
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
-		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people","Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								
 		   	    								case 4:
@@ -1439,12 +1630,27 @@ public class RutasController {
 
 		   	    									viaje.setCobro(cobrocompartido3);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",30);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",30);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	   	    										random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	   	    										random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    										random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    										PedirViaje2("Nullam@interdumNunc.net",random+"",random2+"",random3,"nowhere4",random4,"somewhere4",30);
+	   	    										
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
-		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								}
 		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
@@ -1474,12 +1680,17 @@ public class RutasController {
         
 		   	    									viaje.setCobro(cobrocompartido);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									Integer random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									Integer random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											Integer random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											Integer random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",10);
+   	    											
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido);
-		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								
 		   	    								case 3:
@@ -1490,12 +1701,22 @@ public class RutasController {
     
 		   	    									viaje.setCobro(cobrocompartido2);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",20);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",20);
+   	    											
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido2);
-		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								
 		   	    								case 4:
@@ -1506,12 +1727,27 @@ public class RutasController {
 
 		   	    									viaje.setCobro(cobrocompartido3);
 		   	    									viajeDao.save(viaje);
-		   	    			    	  				
+		   	    									random =ThreadLocalRandom.current().nextInt(2, 200);
+ 		   	    									random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("malesuada@erat.net",random+"",random2+"",random3,"nowhere2",random4,"somewhere2",30);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random2 =ThreadLocalRandom.current().nextInt(2, 200);
+   	    											random3 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											random4 =ThreadLocalRandom.current().nextInt(1, 3);
+   	    											PedirViaje2("rutrum.magna.Cras@nibh.net",random+"",random2+"",random3,"nowhere3",random4,"somewhere3",30);
+   	    											random =ThreadLocalRandom.current().nextInt(2, 200);
+	   	    										random2 =ThreadLocalRandom.current().nextInt(2, 200);
+	   	    										random3 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    										random4 =ThreadLocalRandom.current().nextInt(1, 3);
+	   	    										PedirViaje2("Nullam@interdumNunc.net",random+"",random2+"",random3,"nowhere4",random4,"somewhere4",30);
+	   	    										
 		   	    			    	  				usuarioDao.update(contador, usuario.getID_USUARIO());
 		   	    			    	  				usuario.getViajes().add(viaje);
 		   	    			    	  				usuarioDao.save(usuario);
 		   	    									ra.addFlashAttribute("pago", cobrocompartido3);
-		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + randomNum + " " + "personas");
+		   	    									ra.addFlashAttribute("people", "Compartiste el viaje con" + " " + (randomNum-1) + " " + "personas");
 		   	    									break;
 		   	    								}
 		   	    								ra.addFlashAttribute("success", "Tu Viaje se realizo con exito!");
@@ -1531,5 +1767,69 @@ public class RutasController {
    	    	return"redirect:/viaje_compartido";
    	    }
    	    }
+	/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	public void PedirViaje2(String correo,String distancia,String tiempo,long origen,String origin,long destino,String destiny,int descuento) {
+
+
+/*BUSCAR USUARIO POR CORREO*/
+Usuario usuario = usuarioDao.porCorreo(correo);
+
+Viaje viaje = new Viaje();
+
+/*Contador para los viajes*/
+Integer contador = usuario.getContadorusuario() + 1;
+
+/*SAber el numero de pasajeros para el primer if*/
 	
+	/*SABER EL ORIGEN Y EL DESTINO PARA SABER SI ES DENTRO DE CU O NO */
+	    Origen origenif = origenDao.findOne(origen);
+	    Destino destinoif = destinoDao.findOne(destino);
+	    /*String para saber si el viaje es dentro de CU o no*/
+	    String orin = origenif.getOrigen();
+	    String destn = destinoif.getDestino();
+	    	
+	    		if(orin.equals("SI") && destn.equals("SI")) {
+	    			
+	    		Integer calculodistancia = Integer.parseInt(distancia);
+	    		viaje.setDistancia(calculodistancia);
+	    		viaje.setTiempo(Integer.parseInt(tiempo));
+	    		viaje.setID_ORIGEN(origenif);
+	    		viaje.setID_DESTINO(destinoif);
+	    		viaje.setOrigin(origin);
+	    		viaje.setDestiny(destiny);
+	    			
+	    		Integer cobro = 15;
+	    		Integer porcentajecompartido = descuento;
+				Integer porcencompartido = (cobro*porcentajecompartido)/100;
+				Integer cobrocompartido = cobro - porcencompartido;
+				viaje.setCobro(cobrocompartido);
+				
+				viajeDao.save(viaje);
+				
+				usuarioDao.update(contador, usuario.getID_USUARIO());
+				usuario.getViajes().add(viaje);
+				usuarioDao.save(usuario);
+	    		}else {
+	    			
+	    		Integer calculodistancia = Integer.parseInt(distancia);
+	    		viaje.setDistancia(calculodistancia);
+	    		viaje.setTiempo(Integer.parseInt(tiempo));
+	    		viaje.setID_ORIGEN(origenif);
+	    		viaje.setID_DESTINO(destinoif);
+	    		viaje.setOrigin(origin);
+	    		viaje.setDestiny(destiny);
+	    		Integer cobrofinal = 15 + (calculodistancia * 8);
+	    		Integer porcentajecompartido = descuento;
+	    		Integer porcencompartido = (cobrofinal*porcentajecompartido)/100;
+	    		Integer cobrocompartido = cobrofinal - porcencompartido;
+				viaje.setCobro(cobrocompartido);
+				
+				viajeDao.save(viaje);
+				
+				usuarioDao.update(contador, usuario.getID_USUARIO());
+				usuario.getViajes().add(viaje);
+				usuarioDao.save(usuario);
+	    		}
+	
+}
 }
