@@ -21,38 +21,60 @@
   
   <body onload="nobackbutton();">
     
-    <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-    <div class="container">
-    <a class="navbar-brand" href="#">BASES DE DATOS</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
- 
+    <div class="row">
+    	<div class="col-sm-6 offset-sm-2">
+    		<br/>
+    		<h1>BASES DE DATOS</h1>
+    		<br/>
+    	</div>
     </div>
-</nav>
-
     <div class="cotainer">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row">
+            <div class="col-sm-2 offset-sm-2">
                     <div class="card">
-                        <div class="card-header">Proyecto Bases de Datos TAXIS</div>
+                        <div class="card-header">REGISTRO</div>
                         <div class="card-body">
-                           <button type="button" class="btn btn-primary" onclick="window.location='/registro_chofer';">Registrar Chofer</button>
-                           <br></br>
-<button type="button" class="btn btn-secondary" onclick="window.location='/registro_duenio';">Registrar Dueño</button>
-<br></br>
-<button type="button" class="btn btn-success" onclick="window.location='/registro_vehiculo';">Registrar Vehiculo</button>
-<br></br>
-<button type="button" class="btn btn-danger" onclick="window.location='/registro_usuario';">Registrar Usuario</button>
-<br></br>
-<button type="button" class="btn btn-warning">Consultas</button>
-
+                        	<button type="button" class="btn btn-primary btn-sm " onclick="window.location='/registro_chofer';">REGISTRAR CHOFER</button>
+                        	<br></br>
+							<button type="button" class="btn btn-primary btn-sm" onclick="window.location='/registro_duenio';">REGISTRAR DUEÑO</button>
+							<br></br>
+							<button type="button" class="btn btn-primary btn-sm" onclick="window.location='/registro_vehiculo';">REGISTRAR VEHICULO</button>
+							<br></br>
+							<button type="button" class="btn btn-primary btn-sm" onclick="window.location='/registro_usuario';">REGISTRAR USUARIO</button>
                         </div>
                     </div>
             </div>
-        </div>
+            <div class="col-sm-2 offset-sm-1">
+                    <div class="card">
+                        <div class="card-header">CONSULTAS</div>
+                        <div class="card-body">
+                        	<button type="button" class="btn btn-success btn-sm" onclick="window.location='/consulta_chofer';">CHOFERES</button>
+                        	<br></br>
+							<button type="button" class="btn btn-success btn-sm" onclick="window.location='/consulta_duenio';">DUEÑOS</button>
+							<br></br>
+							<button type="button" class="btn btn-success btn-sm" onclick="window.location='/consulta_vehiculo';">VEHICULOS</button>
+							<br></br>
+							<button type="button" class="btn btn-success btn-sm" onclick="window.location='/consulta_usuario';">USUARIOS</button>
+							<br></br>
+							<button type="button" class="btn btn-success" onclick="window.location='/consulta_multa';">MULTAS</button>
+                        </div>
+                    </div>
     </div>
+            <div class="col-sm-2 offset-sm-1">
+                    <div class="card">
+                        <div class="card-header">VIAJES</div>
+                        <div class="card-body">
+							<button type="button" class="btn btn-warning btn-sm" onclick="window.location='/viaje_solo';">VIAJE SOLO</button>
+							<br></br>
+							<button type="button" class="btn btn-warning btn-sm" onclick="window.location='/viaje_compartido';">VIAJE COMPARTIDO</button>
+							<br></br>
+							<button type="button" class="btn btn-warning btn-sm" onclick="window.location='/viaje_chofer';">VIAJE CHOFER</button>
+							<br></br>
+                        </div>
+                    </div>
+            </div>
+            </div>
+            </div>
 
 
     <!-- Optional JavaScript -->
