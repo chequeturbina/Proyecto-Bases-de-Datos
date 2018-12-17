@@ -38,7 +38,22 @@ public class Multa implements Serializable{
 	    @JoinColumn(name="licencia")
 	    private Chofer licencia;
 	 
-	 /*Relacion ManyToOne por que un dueño puede registrar varios vehiculos*/
+	 public Vehiculo getMatricula() {
+		return matricula;
+	}
+
+
+
+	public void setMatricula(Vehiculo matricula) {
+		this.matricula = matricula;
+	}
+
+
+
+
+
+
+	/*Relacion ManyToOne por que un dueño puede registrar varios vehiculos*/
 	 @ManyToOne	
 	    @JoinColumn(name="matricula")
 	    private Vehiculo matricula;

@@ -41,6 +41,12 @@ public class UsuarioDaoImplement implements InterfaceUsuarioDao {
 		System.out.println(results);
 		return results.isEmpty() ? null : results.get(0);
 	}
+	
+	public Usuario porId(long id) {
+		List<Usuario> results = em.createQuery("SELECT w FROM Usuario w WHERE w.ID_USUARIO = :id", Usuario.class)
+				.setParameter("id", id).getResultList();
+		return results.isEmpty() ? null : results.get(0);
+	}
 
 	@Transactional
 	public void update(Integer contadorusuario,long id){

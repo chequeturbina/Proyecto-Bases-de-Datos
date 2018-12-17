@@ -78,13 +78,6 @@
                                 </div>
                                 
                                 <div class="form-group row">
-                                    <label for="full_name" class="col-md-4 col-form-label text-md-right">Matricula</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="matricula" class="form-control" name="matricula" placeholder="MATRICULA" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group row">
                                     <label for="full_name" class="col-md-4 col-form-label text-md-right">Año</label>
                                     <div class="col-md-6">
                                         <input type="text" id="number" class="form-control" maxlength="4" name="anio" placeholder="AÑO" required>
@@ -160,14 +153,14 @@
                             <div class="form-group row">
                                     <label for="full_name" class="col-md-4 col-form-label text-md-right">Seguro</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="seguro" class="form-control" name="seguro" placeholder="NOMBRE DEL SEGURO" required>
+                                        <input type="text" id="seguro" class="form-control" name="seguro" placeholder="NOMBRE DEL SEGURO">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group row">
                                     <label for="full_name" class="col-md-4 col-form-label text-md-right">Cobertura</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="cobertura" class="form-control" name="cobertura" placeholder="COBERTURA DEL SEGURO" required>
+                                        <input type="text" id="cobertura" class="form-control" name="cobertura" placeholder="COBERTURA DEL SEGURO">
                                     </div>
                                 </div>
                             

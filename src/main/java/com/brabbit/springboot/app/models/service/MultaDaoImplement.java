@@ -9,35 +9,25 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.brabbit.springboot.app.models.entity.Destino;
-
+import com.brabbit.springboot.app.models.entity.Multa;
 
 @Repository
 @EntityScan("com.brabbit.springboot.app.models.entity")
-public class DestinoDaoImplement implements InterfaceDestinoDao {
-
+public class MultaDaoImplement implements InterfaceMultaDao {
+	
 	@PersistenceContext
 	private EntityManager em;
-
-
+	
 	@Transactional
 	@Override
-	public void save(Destino destino) {
+	public void save(Multa multa) {
 		// TODO Auto-generated method stub
-		em.persist(destino);
-
+		em.persist(multa);
 	}
 	
-	@SuppressWarnings("unchecked")
-	@Transactional(readOnly = true)
-	@Override
-	public List<Destino> findAll() {
-		List tipos = em.createQuery("SELECT e FROM Destino e", Destino.class).getResultList();
-		return tipos;
+	public List<Multa> listarMultas(){
+		List<Multa> multas=em.createQuery("SELECT e FROM Multa e",Multa.class).getResultList();
+		return multas;
 	}
 
-	public Destino findOne(long tipo) {
-		return em.find(Destino.class, tipo);
-	}
-	
 }
